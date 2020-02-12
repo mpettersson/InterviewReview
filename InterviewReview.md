@@ -1,7 +1,8 @@
 INTERVIEW REVIEW
 ================
 
-TODO: Put purpose of this document here...  
+This is a language-independent, high level, computer science and coding interview review.  This is intended to be used 
+in conjunction with language specific reviews.   
 
 The sections are:  
 - Generic Interview Tips
@@ -542,8 +543,8 @@ DATA STRUCTURES
 - A linear data structure, in which the elements are not stored at contiguous memory locations
 - Each node had at least one pointer to the next node in the data structure. 
 - Implementation Variations:
-    * Singly Linked - Each node has just one pointer to the next node in the list; the tails next value is always null/none.
-    * Doubly Linked - A singly linked list with an additional pointer, previous, that points to the previous node in the list.
+    * Singly Linked - Each node has just one pointer to the next node in the list; tail's next value is always null/none.
+    * Doubly Linked - A singly linked list with an additional pointer (previous) that points to the previous node.
     * Circular Linked - A doubly linked list where the tails next points to the head of the list. 
 - Node Class
     * data - The data that the node holds. 
@@ -607,7 +608,7 @@ DATA STRUCTURES
         * Every vertex/node stores a list/array of adjacencies/neighbors.  
         * Node Class:
             - name - Name of the vertex/node in the graph.
-            - adjacencies[] - (or children/neighbors[]) List/array of the adjacencies/neighbors this node is connected to (may contain weight).
+            - adjacencies[] - Aka children/neighbors, List/array of adjacencies node is connected to (may contain weight).
             - state - (Optional) An enum representing state (visiting/visited/unvisited) 
             - visited - (Optional) A boolean to indicate if a vertex/node has been visited in a traversal/search. 
     2. Adjacency Matrices 
@@ -634,12 +635,13 @@ DATA STRUCTURES
 - Implementation Variations:
     * Trie or Prefix Tree - An N-ary reTRIEval tree, where characters are stored at each node.
     * Binary Trees - A tree in which each node has a MAX of 2 children.
-    * Binary Search Trees - A binary tree (typically without duplicates) with the ordering property: all left descendants >= n < all right descendants.
+    * Binary Search Trees - A binary tree (typically without duplicates) with the ordering property: 
+                            For each node n, all left descendants >= n < all right descendants.
     * AVL/Red-Black Tree - Self balancing binary search tree.
-    * Complete Binary Tree - A binary tree in which every level of the tree is fully filled, except (optionally) the last level.
+    * Complete Binary Tree - A bin tree in which every level is fully filled, except (optionally) the last level.
     * Max/Min Heap - A complete binary tree where every node is greater/smaller than its children.
         - Insert a new node in the last level, then "fix" or bubbled it to the correct place (to maintain order).
-        - ExtractMax/Min a max/min node, then replace it with the last node (last level), then bubble it to the correct place.
+        - ExtractMax/Min a max/min node, then replace it with the last node (last level), then bubble it to correct place.
 - Node Class:
     * name - Name, or value, of the node in the tree.
     * children[] - (if not binary tree) - The list/array of children nodes of current node. 
@@ -1189,7 +1191,7 @@ Ensures that at most only one instance of an object exists throughout applicatio
 
 
 #### Factory
-The factory design patter defines an interface for creating an object, but let subclasses decide which class to instantiate.  
+The factory design pattern defines an interface for creating an obj, but let subclasses decide which class to instantiate.  
 This pattern delegates the responsibility of initializing a class from the client to a particular factory class by 
 creating a type of virtual constructor.  
 The created objects are accessed using a common interface.
