@@ -1,6 +1,16 @@
 INTERVIEW REVIEW
 ================
 
+TODO TODO TODO
+--------------
+- Strongly Connected Set
+- Total Order Linear Order Set
+- Parially Ordered Set (Poset)
+- Multisets - a modification of the concept of a set that, unlike a set, allows for multiple instances for each of its elements
+- Hamiltonian/Traceable Path: A path in an undirected or directed graph that visits each vertex exactly once.
+- Hamiltonian Cycle:  A Hamiltonian path that is a cycle (or, a non-empty path in which ONLY the first and last vertices are equal.
+
+
 This is a language-independent, high level, computer science and coding interview review.  This is intended to be used 
 in conjunction with language specific reviews.   
 
@@ -22,14 +32,20 @@ GENERIC INTERVIEW TIPS
 ----------------------
 - Never Give Up.
 - Always state all assumptions, take a second to ask if assumptions are OK.
-- Always create/draw examples, even if it looks easy, find all of the corner cases before you code anything.
+- Always create/draw examples, even if it looks easy, find ALL corner cases before you code anything.
+- Work through ONE FULL example to better understand relationships/properties/gotchas.
 - Think out loud, wonder out loud, explain thought process.
 - Always give a naive/brute force solution first (so you have something), then attempt optimal solution.
-- Separate code into different methods; it's easier to work with, and it's better to finish defining methods and SOME 
-   code than not finishing ALL code in a massive method.
-- For questions about languages, if you don't know, admit you don't remember, but offer to try and figure it out
-   by using code examples and/or trying to remember past examples.
-- Optimize when done (or stuck).
+- Decompose!  Separate code into different methods; it's easier to work with, and it's better to finish defining methods  
+   and SOME code than not finishing ALL code in a massive method.
+- When stuck:
+  - Remember, optimization problems are DP or Greedy!
+  - Try abstracting then mapping the unknown problem to variations of problems you know.
+  - Can you solve the inverse of the problem?
+  - (Language Questions) Admit you don't remember, but offer to try and figure it out by using code examples and/or 
+    trying to remember past examples.
+- When Done:
+  - Optimize.
  
 
 
@@ -42,6 +58,11 @@ DEFINITIONS
     * The computational complexity that describes the amount of time it takes to run an algorithm.
 - Space Complexity
     * Total space taken by an algorithm with respect to input size.
+- SubArray 
+	* A subarray is a contiguous part of any given array.
+- Subsequence
+	* A subsequence is a sequence that can be derived from a string/array/sequence by deleting some or none of the 
+  		elements without changing the order of the remaining elements
 - O (big O)
     * The limiting behavior, or an upper bound, of a function when the argument tends to a particular value or infinity.
     * less than or equal to  
@@ -50,6 +71,33 @@ DEFINITIONS
 - Θ (big theta)
     * Both Big O and Big Omega; a tight bound to describe the computation complexity of a function. 
     * NOTE: This is typically what CS/Industry people mean when they say "Big O".
+- Quadratic Time
+    * O(n^2) 
+- P (Polynomial Time)
+    * A complexity class that represents the set of all decision problems that can be solved in polynomial time.
+    * Polynomial Def.: An expression of more than two algebraic terms, especially the sum of several terms that contain 
+      different powers of the same variable.
+    * O(n^k) for some k
+- Pseudo-polynomial Time
+    * Polynomial in the value/magnitude of input but exponential in the size of input
+- NP (Nondeterministic Polynomial-time)
+    * A complexity class that represents the set of all decision problems for which the instances where the answer is 
+      "yes" have proofs that can be verified in polynomial time.
+    * EX: Integer Factorisation.
+- NP-Complete (Nondeterministic Polynomial-time Complete)
+    * A complexity class which represents the set of all problems X in NP for which it is possible to reduce any other 
+      NP problem Y to X in polynomial time.
+    * EX: 3-SAT (It can be shown that every NP problem can be reduced to 3-SAT.)
+    * NOTE: NP-complete problems are important because if a deterministic polynomial time algorithm can be found to 
+      solve ONE of them, ALL/EVERY NP problem is solvable in polynomial time!
+- NP-Hard
+    * A problem X is NP-hard, if there is an NP-complete problem Y, such that Y is reducible to X in polynomial time.
+    * Do NOT have to be in NP.
+    * Do NOT have to be decision problems.
+    * EX: Halting Problem, Minesweeper Problem.
+- In-Place
+    * An algorithm which transforms input using no auxiliary data structure (however, a small amount of space for 
+      auxiliary variables is permitted).
 - Pass By Value  
     * A local parameter is a COPY of the original argument passed in to the function.   
     * Changes made in the function to the variable does not affect original.
@@ -62,12 +110,70 @@ DEFINITIONS
 - Dynamic Programming 
     * An optimization over plain recursion.
     * A method for solving a complex problem by breaking it down into a collection of simpler sub-problems, solving 
- 		each of those sub-problems just once, and storing their solutions using a memory-based DS (array, map,etc). 
-	* Each of the sub-problem solutions is indexed in some way, typically based on the values of its input parameters,
- 		so as to facilitate its lookup.
-	* There are two different ways to store the values so that the values of a sub-problem can be reused.
-		- Tabulation - Bottom up
- 		- Memoization - Top Down
+         each of those sub-problems just once, and storing their solutions using a memory-based DS (array, map,etc). 
+    * Each of the sub-problem solutions is indexed in some way, typically based on the values of its input parameters,
+         so as to facilitate its lookup.
+    * There are two different ways to store the values so that the values of a sub-problem can be reused.
+    * TOP DOWN With Memoization 
+        - Recursive.
+        - NOT ALL sub-problems may be solved; only the required sub-problems (in recursion path). 
+        - DFS Sub-Problem Graph
+    * BOTTOM UP With Tabulation 
+        - Iterative.
+        - Solve ALL sub-problems, from small to large.
+        - Reverse Topological Sort Sub-Problem Graph
+- First Order Logic 
+    * AKA Predicate Logic, Quantificational Logic, and First-Order Predicate Calculus
+    * The Membership Symbol:
+        - ∈
+    * The Quantifier Symbols: 
+      - ∀ for universal quantification 
+      - ∃ for existential quantification
+    * The Logical Connective Symbols: 
+      - ∧ for conjunction
+      - ∨ for disjunction 
+      - → for implication
+      - ↔ for biconditional 
+      - ¬ for negation.
+    * An equality Symbol (Identity Symbol):
+      - =
+    * Variables:
+      - Denoted by lowercase letters at the end of the alphabet x, y, z.
+      - Often use subscripts
+    * SEE: wikipedia.org/wiki/First-order_logic
+- Binary Relation
+    * An association of elements from one set, called the domain, with elements of another set, called the codomain.
+    * Or, a relationship between elements of two sets (i.e., < or =).
+- Reflective Relation
+    * A binary relation that relates every element in the set to itself.
+    * a ~ a
+    * a <= a
+- Symmetric Relation
+    * A binary relation R on X is said to be symmetric if and only if an element a is related to b, then b is also 
+      related to a for every a, b in X. 
+    * a ~ b IFF b ~ a
+- Transitive Relation
+    * A binary relation R on a set X is transitive if, for all elements a, b, c in X, whenever R relates a to b and 
+      b to c, then R also relates a to c. 
+    * Each partial order as well as each equivalence relation needs to be transitive.
+    * If a < b and b < c then a < c
+- Equivalence Relation
+    * A binary relation that is REFLEXIVE, SYMMETRIC, and TRANSITIVE.
+- Antisymmetric Relation
+    * A binary relation R on a set X is antisymmetric if there is no pair of distinct elements of X each of which is 
+      related by R to the other. 
+    * If a <= b and b <= a then a == b
+- Partial Order Relation
+    * A relation that is TRANSITIVE and ANTISYMMETRIC.
+    * A Non-Strict Partial Order has Reflexivity, Antisymmetry, and Transitivity.  
+    * A Irreflexive/Strict/Strong Partial Order has Irreflexivity, Transitivity, and Asymmetry.
+- Asymmetric Relation
+    * If a < b then Not b < a
+    * ∀a,b ∈ X: ¬(aRb ∧ bRa)
+    * EX: < between real numbers: if x < y then you can't flip x and y...
+- Invariant
+    * A function, quantity, or property which remains unchanged when a specified transformation is applied.
+    * Or, a condition that remains true during execution.
 - Infix Notation
     * Operators are written between their operands ("normal" way).
     * Needs extra information to make the order of evaluation of the operators clear (i.e., () and order of operations).
@@ -82,39 +188,54 @@ DEFINITIONS
     * The order of evaluation of operators is always left-to-right, and brackets/() cannot be used to change this order. 
     * Example: A B C + * D /  (or with parenthesis:  ((A (B C +) *) D /) )
 - Two's Complement
-	* How computers store integers.
-	* Positive number has a 0 as the leading or sign bit.
-	* Negative number has a 1 as the leading or sign bit.
-	* To convert a binary number to a binary negative number: (1) invert all bits, (2) and add 1
+    * How computers store integers.
+    * Positive number has a 0 as the leading or sign bit.
+    * Negative number has a 1 as the leading or sign bit.
+    * To convert a binary number to a binary negative number: (1) invert all bits, (2) and add 1
 - Endianness
-	* Refers to the order of bytes (or sometimes bits) within a binary representation of a number. 
-	* In its most common usage, endianness indicates the ordering of bytes within a multi-byte number.
+    * Refers to the order of bytes (or sometimes bits) within a binary representation of a number. 
+    * In its most common usage, endianness indicates the ordering of bytes within a multi-byte number.
 - Big-Endian
-	* The "big end", most significant value in the sequence, is stored first (at the lowest storage address). 
+    * The "big end", most significant value in the sequence, is stored first (at the lowest storage address). 
 - Little-Endian
-	* The "little end", least significant value in the sequence, is stored first.
-	* Most PCs (x86) are this way (note that ARM is bi-endian)
+    * The "little end", least significant value in the sequence, is stored first.
+    * Most PCs (x86) are this way (note that ARM is bi-endian)
 - Prime Number
-	* A whole number greater than 1 whose only factors are 1 and itself. 
+    * A whole number greater than 1 whose only factors are 1 and itself. 
 - Factor
-	* A factor is a whole numbers that can be divided evenly into another number.
+    * A factor is a whole numbers that can be divided evenly into another number.
 - Prime Factor
-	* Any number in the set of prime numbers that is also a factor of (or, can be evenly divided into) a given integer. 
-	* There is only one unique set of prime factors for any number.
+    * Any number in the set of prime numbers that is also a factor of (or, can be evenly divided into) a given integer. 
+    * There is only one unique set of prime factors for any number.
 - Hash Function
-	* Any function that can be used to map data of arbitrary size to fixed-size values.
-	* Values returned by a hash function are called hash values, hash codes, digests, or hashes.
+    * Any function that can be used to map data of arbitrary size to fixed-size values.
+    * Values returned by a hash function are called hash values, hash codes, digests, or hashes.
 - Type Erasure
-	* In programming languages, type erasure refers to the load-time process by which explicit type annotations are 
- 		removed from a program, before it is executed at run-time.
-	* In JAVA it is used to implement generics. The Java compiler does:
- 		- Replaces all type parameters in generic types with their bounds or Object if the type parameters are 
- 		    unbounded. The produced bytecode, therefore, contains only ordinary classes, interfaces, and methods.
- 		- Insert type casts if necessary to preserve type safety.
- 		- Generate bridge methods to preserve polymorphism in extended generic types.
+    * In programming languages, type erasure refers to the load-time process by which explicit type annotations are 
+         removed from a program, before it is executed at run-time.
+    * In JAVA it is used to implement generics. The Java compiler does:
+         - Replaces all type parameters in generic types with their bounds or Object if the type parameters are 
+             unbounded. The produced bytecode, therefore, contains only ordinary classes, interfaces, and methods.
+         - Insert type casts if necessary to preserve type safety.
+         - Generate bridge methods to preserve polymorphism in extended generic types.
 
 
 #### Data Structures
+- Array
+  	* A linear data structure consisting of a collection of elements (values or variables) with the same data type.
+    * The elements are of the same memory size, stored contiguously, in adjacent memory locations 
+    * Elements are identified by at least one array index (tuple) or key. 
+	* An array is stored such that the position of each element can be computed from its index tuple (i.e., array[4][2]).
+    * Arrays provide O(1) random access lookup time.
+- Stack
+	* A linear data structure consisting of similar elements, with FILO (First In Last Out) order.
+    * Push/Pop operations are O(1).
+    * Get/Search operations are O(n).
+	* Used when implementing a recursive algorithm iteratively (i.e., depth-first search).
+- Queue
+	* A linear data structure consisting of similar elements, with FIFO (First In First Out) order.
+    * Enqueue/Dequeue operations are O(1).
+    * Get/Search operations are O(n).
 - Tree 
 	* A data structure comprised of nodes.  
     * Each tree has a root node. 
@@ -143,12 +264,12 @@ DEFINITIONS
 	* ALL leaf nodes will be at the same level, and that level has the maximum number of nodes.
 	* Will have exactly 2^k - 1 nodes, where k is the number of levels. 
 - AVL Tree (Adelson-Velsky and Landis)
-	* A self balancing binary search tree.
+	* A self-balancing binary search tree.
 	* Maintains height of two child sub-trees.
 	* If at any time children heights DIFFER by more than ONE, the tree is rebalanced via ROTATIONS.
 	* Lookup, Insertion, Deletion all take O(log n) time (both average and worst case) where n is number of nodes.
 - Red-Black Tree
-	* A self balancing binary search tree.
+	* A self-balancing binary search tree.
 	* Each node has a color (red or black) property, used to ensure the tree is approximately balanced.
 	* Balancing is "good enough" to ensure an Insertion, Deletion and Lookup time of O(log n).
 	* Are faster and require less memory than AVL trees.
@@ -203,19 +324,18 @@ DEFINITIONS
 - Depth-First Search
 	* Start at root (or another arbitrarily selected node), and explore each branch COMPLETELY before moving on to
  		the next branch.
-	* DFS is Simpler to visit every node in the graph. 
+	* DFS is good for visiting ALL nodes in a graph. 
 	* Can implement with recursion. 
 - Breadth-First Search
 	* Start at root (or another arbitrarily selected node), and explore each neighbor before going on to any of their
  		children.
-	* BFS is better for shortest path.
+	* BFS is good for finding shortest, or connecting, paths.
 	* NOTE: If implementing, Don't Use Recursion, use a QUEUE!
 	* BigO: O(q^k) where k is number of nodes and q is path length 
 - Bidirectional Breadth First Search
 	* A search to find the shortest path between a source and destination node.
 	* Basically, it runs two Breadth-First Searches, one at each node, colliding and forming a path. 
-	* BigO: O(q^k/2 + q^k/2) where k is the number of nodes and q is path length.
-	* Much better than normal Breadth-First Search!
+	* BigO: O(q^k/2 + q^k/2) where k is the number of nodes and q is path length (has 2x performance gain!).
 - Hash Table
 	* A Data Structure that implements a collection of key, value pairs, where the keys are mapped to the values.
 	* Uses a hash function, on the key, to compute the keys index of the hash table. 
@@ -405,9 +525,13 @@ DEFINITIONS
 
 
 #### Miscellaneous
+- Decision Problem
+    * A problem with (ONLY) a yes or no answer.
+- Lexicographic, Lexical, Dictionary Order
+    * A generalization of the alphabetical order.
 - Birthday Paradox
-	* With 23 people, there is a 50% chance that two will share the same birthday.
-	* With 70 people, there is a 99.9% chance that two will share the same birthday. 
+    * With 23 people, there is a 50% chance that two will share the same birthday.
+    * With 70 people, there is a 99.9% chance that two will share the same birthday. 
 - Unified Modeling Language (UML)
     * General purpose modeling language.
     * Defines a stand way to visualize the behavior and structure of a system.
@@ -1413,7 +1537,19 @@ TODO TODO TODO --- Reread CCI chapter 6 (pg 117) and add probability and other m
 - Quadratic Formula === ax^(2) + bx + x --> x = [-b +- sqrt(b^2 - 4ac)] / 2a
 - union(A, B) === A + B - intersection(A, B)
 - a set of size n has 2^n subsets. 
-
+- Bit-wise Operators: & (and), | (or), ~ (not), ^ (xor), << (shift left), and >> (shift right--fills with MSB).
+    - Set union:         A | B
+    - Set intersection:  A & B
+    - Set subtraction:   A & ~B
+    - Set negation:      ALL_BITS ^ A or ~A
+    - Set bit:           A |= 1 << bit
+    - Clear bit:         A &= ~(1 << bit)
+    - Test bit:          (A & 1 << bit) != 0
+    - Extract last bit:  A&-A
+                         A&~(A-1)
+                         x^(x&(x-1))
+    - Remove last bit A&(A-1)
+    - Get all 1-bits ~0
 
 
 
@@ -1436,6 +1572,9 @@ REFERENCES & LINKS
 [Java Multithreading Questions](https://javarevisited.blogspot.com/2014/07/top-50-java-multithreading-interview-questions-answers.html)
 [Java Lock/Synchronization Questions](https://javarevisited.blogspot.com/2017/02/10-java-wait-notify-locking-and-synchronization-Interview-Questions-Answers.html)
 
+
+#### REFERENCES
+https://stackoverflow.com/questions/1857244/what-are-the-differences-between-np-np-complete-and-np-hard
 
 
 
